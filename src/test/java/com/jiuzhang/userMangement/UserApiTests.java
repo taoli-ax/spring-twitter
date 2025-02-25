@@ -36,7 +36,7 @@ public class UserApiTests {
 
     @BeforeEach
     public void setup() {
-        UserDTO userDTO = new UserDTO();
+        userDTO = new UserDTO();
         userDTO.setUsername("linghu");
         userDTO.setEmail("linghu@gmail.com");
         mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
