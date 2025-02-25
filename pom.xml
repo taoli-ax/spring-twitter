@@ -10,7 +10,12 @@
 		<version>2.3.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-
+	<repositories>
+		<repository>
+			<id>central</id>
+			<url>https://repo.maven.apache.org/maven2</url>
+		</repository>
+	</repositories>
 	<groupId>com.jiuzhang</groupId>
 	<artifactId>userManagement</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -79,7 +84,12 @@
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
+		<!-- SpringDoc OpenAPI for Swagger integration -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.6.13</version>
+		</dependency>
 		<!-- 测试相关 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -97,10 +107,5 @@
 		</plugins>
 	</build>
 
-	<repositories>
-		<repository>
-			<id>central</id>
-			<url>https://repo.maven.apache.org/maven2</url>
-		</repository>
-	</repositories>
+
 </project>

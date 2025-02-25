@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class UserService {
     @Autowired
@@ -45,6 +44,7 @@ public class UserService {
 
             return userRepository.save(user);
         }
+
         ).orElseThrow(() -> new RuntimeException("User Not Found"));
     }
 

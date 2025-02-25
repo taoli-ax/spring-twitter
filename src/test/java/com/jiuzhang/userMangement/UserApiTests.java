@@ -84,7 +84,7 @@ public class UserApiTests {
         String userJson = objectMapper.writeValueAsString(userDTO);
 
         // put请求
-        mockMvc.perform(put("/users/"+id).
+        mockMvc.perform(patch("/users/"+id).
                 contentType(MediaType.APPLICATION_JSON).
                 content(userJson)).
                 andExpect(status().isOk()).
