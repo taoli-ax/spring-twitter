@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.jws.soap.SOAPBinding;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -35,10 +35,16 @@ public class UserService {
 
     public User updateUser(long id, UserDTO userDetail){
         return userRepository.findById(id).map(user -> {
-            Optional.ofNullable(userDetail.getUsername()).ifPresent(user::setUsername);
-            Optional.ofNullable(userDetail.getEmail()).ifPresent(user::setEmail);
-                    return userRepository.save(user);
-                }
+            if (userDetail.getUsername() != null) {
+                user.setUsername(userDetail.getUsername());
+            }
+            if (userDetail.getEmail() != null) {
+                user.setEmail(userDetail.getEmail());
+            }
+
+            return userRepository.save(user);
+        }
+
         ).orElseThrow(() -> new RuntimeException("User Not Found"));
     }
 

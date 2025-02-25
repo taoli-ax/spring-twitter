@@ -15,7 +15,9 @@ public class UserDTO {
     @Size(min = 2, max = 20, message = "username length should between 2-20")
     private String username;
 
-    @NotNull(message = "email should not be null")
+
+
+    @NotNull(message = "email should not null")
     @Email(message = "should enter valid email")
     private String email;
 
