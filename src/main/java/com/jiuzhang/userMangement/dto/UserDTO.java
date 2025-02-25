@@ -19,12 +19,18 @@ public class UserDTO {
     @Email(message = "should enter valid email")
     private String email;
 
+    private long id;
     public UserDTO(User user) {
+        this.id = user.getId();
         this.username = user.getUsername();
         this.email = user.getEmail();
     }
     public UserDTO(){
 
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getUsername() {
