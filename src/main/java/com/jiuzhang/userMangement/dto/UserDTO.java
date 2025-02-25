@@ -15,11 +15,12 @@ public class UserDTO {
     @Size(min = 2, max = 20, message = "username length should between 2-20")
     private String username;
 
-
+    @NotNull(message = "email should not be null")
     @Email(message = "should enter valid email")
     private String email;
 
     private long id;
+
     public UserDTO(User user) {
         this.id = user.getId();
         this.username = user.getUsername();

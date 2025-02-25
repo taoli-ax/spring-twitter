@@ -36,7 +36,7 @@ public class UserApiTests {
 
     @BeforeEach
     public void setup() {
-        UserDTO userDTO = new UserDTO();
+        userDTO = new UserDTO();
         userDTO.setUsername("linghu");
         userDTO.setEmail("linghu@gmail.com");
         mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
@@ -84,7 +84,7 @@ public class UserApiTests {
         String userJson = objectMapper.writeValueAsString(userDTO);
 
         // put请求
-        mockMvc.perform(put("/users/"+id).
+        mockMvc.perform(patch("/users/"+id).
                 contentType(MediaType.APPLICATION_JSON).
                 content(userJson)).
                 andExpect(status().isOk()).

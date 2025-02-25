@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.jws.soap.SOAPBinding;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -34,8 +35,8 @@ public class UserService {
 
     public User updateUser(long id, UserDTO userDetail){
         return userRepository.findById(id).map(user -> {
-                    user.setUsername(userDetail.getUsername());
-                    user.setEmail(userDetail.getEmail());
+            Optional.ofNullable(userDetail.getUsername()).ifPresent(user::setUsername);
+            Optional.ofNullable(userDetail.getEmail()).ifPresent(user::setEmail);
                     return userRepository.save(user);
                 }
         ).orElseThrow(() -> new RuntimeException("User Not Found"));
